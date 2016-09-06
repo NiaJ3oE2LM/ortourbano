@@ -1,0 +1,73 @@
+.panel
+  .panel-heading
+    h3.panel-title Real time parameters
+  .panel-body
+    .row
+      .col-xs-6
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title Temperature
+          .panel-body
+            | {{temp}}
+      .col-xs-6
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title Light
+          .panel-body
+            | {{light}}
+    .row
+      .col-xs-6
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title Humidity
+          .panel-body
+            | {{hum}}
+      .col-xs-6
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title Water
+          .panel-body
+            | {{water}}
+            
+.panel
+  .panel-heading
+    h3.panel-title Recent values
+  .panel-body
+    #graph
+    
+.panel
+  .panel-heading
+    h3.panel-title Tools
+  .panel-body
+    .row
+      .col-xs-4
+        a.thumbnail(data-toggle="modal", data-target="#m1")
+          img(src='public/ic_all_out_48px.svg')
+          .caption
+            h3 Fix it
+            p some details
+      .col-xs-4
+        a.thumbnail(href='')
+          img(src='public/ic_all_out_48px.svg')
+          .caption
+            h3 Fix it
+            p some details
+      .col-xs-4
+        a.thumbnail(href='')
+          img(src='public/ic_all_out_48px.svg')
+          .caption
+            h3 Fix it
+            p some details
+div(style="height:5em;")
+
+#m1.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+        h4#myModalLabel.modal-title Modal title
+      .modal-body
+        | ...
+      .modal-footer
+        button.btn(type='button') Fire!

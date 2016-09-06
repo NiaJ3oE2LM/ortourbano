@@ -2,6 +2,7 @@
 angular.module('starter')
 .controller('mainCtrl',['$scope', '$http', function($scope, $http){
 
+
   $(function () {
     $('#graph').highcharts({
       title: {
@@ -49,25 +50,26 @@ angular.module('starter')
 });
 
 
-//TODO  imposta chiamata
+//TODO  imposta chiamata con timeout
 function chiamata() {
   $http({
   method: 'GET',
   data:{},
   url: '/garden/',
 }).then(function successCallback(response) {
-    //TODO aggiona scope valori
-    console.log(response.data);
+  $scope.temp= response.data[0].temperature;
+  $scope.light= response.data[0].brightness;
+  $scope.hum= response.data[0].humidity;
 
   }, function errorCallback(response) {
     console.log(response);
   });
 }
 
-$scope.temp= 30;
-$scope.light= 50;
+setInterval(chiamata, 5000);
+
 $scope.water= 'ok';
-$scope.hum= 20;
+
 
 
 

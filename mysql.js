@@ -29,7 +29,7 @@ exports.uploadAll = function (values, callback){
   });
 }
 
-exports.getValue = function ( callback){
+exports.getValue = function (callback){
   //IDEA imposta time stamp ddel db
   var sql="SELECT * FROM bioedison WHERE id = (SELECT max(id) FROM bioedison)"; //TODO controlla slelect valore unico
   connection.query(sql, function(err, result){

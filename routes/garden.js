@@ -33,4 +33,24 @@ router.route('/')
 .put(function (req, res) {})
 .post(function(req, res){});
 
+router.route('/history')
+.get(function (req, res) {
+  db.getHistory(function(err, data){
+    if(err)console.log(err);
+    else res.send(data); //json dati
+    //TODO LOG PER vedere cosa scrive
+  });
+
+});
+
+router.route('/id')
+.get(function (req, res) {
+  db.getId(function(err, data){
+    if(err)console.log(err);
+    else res.send(data); //json dati
+    //TODO LOG PER vedere cosa scrive
+  });
+
+});
+
 module.exports = router;

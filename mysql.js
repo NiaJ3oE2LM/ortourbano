@@ -9,7 +9,18 @@ var connection = mysql.createConnection({
 
 exports.getHistory = function (callback){
   //IDEA per fare il grafico scarica gli ultimi 10 valori
-  var sql="SELECT * FROM bioedison WHERE id BETWEEN 1 AND 10";
+  var sql="SELECT * FROM bioedison WHERE id BETWEEN 0 AND 10";
+  connection.query(sql, function(err, result){
+
+    if(err) callback(err, null);
+    else callback(null, result);
+
+  });
+}
+
+exports.getId = function (callback){
+  //IDEA per fare il grafico scarica gli ultimi 10 valori
+  var sql="SELECT id FROM bioedison WHERE id = (SELECT max(id) FROM bioedison)";
   connection.query(sql, function(err, result){
 
     if(err) callback(err, null);

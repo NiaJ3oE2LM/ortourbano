@@ -2,33 +2,22 @@
   .panel-heading
     h3.panel-title Real time parameters
   .panel-body
-    .row
-      .col-xs-6
-        .panel.panel-default
-          .panel-heading
-            h3.panel-title Temperature
-          .panel-body
-            | {{temp}}
-      .col-xs-6
-        .panel.panel-default
-          .panel-heading
-            h3.panel-title Light
-          .panel-body
-            | {{light}}
-    .row
-      .col-xs-6
-        .panel.panel-default
-          .panel-heading
-            h3.panel-title Humidity
-          .panel-body
-            | {{hum}}
-      .col-xs-6
-        .panel.panel-default
-          .panel-heading
-            h3.panel-title Water
-          .panel-body
-            | {{water}}
-            
+    .panel-heading
+      h4.panel-title temperature
+    .progress
+      .progress-bar.progress-bar-danger(role='progressbar.progress-bar-success', aria-valuenow='{{temp}}', aria-valuemin='0', aria-valuemax='100', style='width: {{temp}}%;')
+        {{temp}}°C
+    .panel-heading
+      h4.panel-title light
+    .progress
+      .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='{{light}}', aria-valuemin='0', aria-valuemax='100', style='width: {{light*10}}%;')
+        {{light}} ?
+    .panel-heading
+      h4.panel-title humidity
+    .progress
+      .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='{{hum}}', aria-valuemin='0', aria-valuemax='100', style='width: {{hum/15}}%;')
+        {{hum}} ?
+      
 .panel
   .panel-heading
     h3.panel-title Recent values

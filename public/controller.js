@@ -49,24 +49,52 @@ angular.module('starter')
  });
 });
 
-
+var lastId;
 //TODO  imposta chiamata con timeout
-function chiamata() {
-  $http({
-  method: 'GET',
-  data:{},
-  url: '/garden/',
-}).then(function successCallback(response) {
-  $scope.temp= response.data[0].temperature;
-  $scope.light= response.data[0].brightness;
-  $scope.hum= response.data[0].humidity;
-
-  }, function errorCallback(response) {
-    console.log(response);
-  });
+function getValue(id){
+  if(lastId == id) console.log('nothing to update');
+  else {
+    $http({
+      method: 'GET',
+      url: '/garden/'
+      }).then(function successCallback(response) {
+        lastId = id;
+        $scope.temp= response.data[0].temperature;
+        $scope.light= response.data[0].brightness;
+        $scope.hum= response.data[0].humidity
+        }, function errorCallback(response) {
+          console.log(response);
+        });
+  }
 }
 
-setInterval(chiamata, 5000);
+function getId(){
+  $http({
+    method: 'GET',
+    url: '/garden/id'
+    }).then(function successCallback(response) {
+        getValue(response.data[0].id);
+      }, function errorCallback(response) {
+        console.log(response);
+      });
+    }
+
+function updateHistory() {
+  $http({
+    method: 'GET',
+    url: '/garden/'
+    }).then(function successCallback(response) {
+        //TODO trasforma matrice e aggirna grafico
+        console.log('grafico');
+    }, function errorCallback(response) {
+      console.log(response);
+    });
+  }
+
+//load initial values
+getId();
+setInterval(getId, 5000);
+setInterval(updateHistory, 5000);
 
 $scope.water= 'ok';
 

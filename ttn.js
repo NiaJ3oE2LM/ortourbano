@@ -1,5 +1,5 @@
 var ttn = require('ttn'),
-  db = require('mysql.js');
+  db = require('./mysql.js');
 
 var appEUI = '70B3D57ED0000669';
 var accessKey = 'tFLz+J8NvTlp01annRnNBi3h8GqYmHhwzTxmdSbZjiA=';
@@ -18,10 +18,12 @@ client.on('activation', function (e) {
 });
 
 client.on('uplink', function (msg) {
-  console.info('[INFO] ', 'Uplink: ' + JSON.stringify(msg, null, 2));
-  console.log(msg);
+var json = JSON.parse(msg.fields.message);
+  console.log(json);
   //TODO store data in db
-
-  //db.uploadAll();//object values
+  db.uploadAll(json, function(err, data){
+    if (err) console.log(data);
+    else console.log('db up to date');
+  });
 
 });

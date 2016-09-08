@@ -29,9 +29,9 @@ exports.getId = function (callback){
   });
 }
 
-exports.uploadAll = function (values, callback){
+exports.uploadAll = function (json, callback){
 
-    var sql="INSERT INTO bioedison (time, temperature, humidity, light, water) VALUES (SYSDATE(),"+values[0]+","+values[1]+","+values[2]+","+values[3]+")";
+    var sql="INSERT INTO bioedison (date_time, temperature, humidity, brightness) VALUES (SYSDATE(),"+json.temp+","+json.hum+","+json.light+")";
   connection.query(sql, function(err, result){
 
     if(err) callback(err, null);

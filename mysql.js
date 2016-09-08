@@ -8,8 +8,8 @@ var connection = mysql.createConnection({
 });
 
 exports.getHistory = function (callback){
-  //IDEA per fare il grafico scarica gli ultimi 10 valori
-  var sql="SELECT * FROM bioedison WHERE id BETWEEN 0 AND 10";
+  //IDEA between (max(id)-50) and max(id) 
+  var sql="SELECT * FROM bioedison WHERE id BETWEEN 0 AND 50";
   connection.query(sql, function(err, result){
 
     if(err) callback(err, null);

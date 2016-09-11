@@ -1,3 +1,4 @@
+//IDEA pagina main con tutte le piante. pane che si arrotola, a mo di social. ogni panel è full screen e scrollable. mantieni in una pagina la visualizzazione di tutte le informazioni 
 .panel
   .panel-heading
     h3.panel-title Real time parameters
@@ -13,51 +14,29 @@
       .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='{{light}}', aria-valuemin='0', aria-valuemax='100', style='width: {{light*10}}%;')
         {{light}}Lux
     .panel-heading
-      h4.panel-title humidity
-    .progress
-      .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='{{hum}}', aria-valuemin='0', aria-valuemax='100', style='width: {{hum/15}}%;')
-        {{hum}}Kg/m^3
-    .panel-heading
-      h4.panel-title gas
-    .progress
-      .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='{{gas}}', aria-valuemin='0', aria-valuemax='100', style='width: {{gas/15}}%;')
-        {{gas}}Sm^3
-    .panel-heading
       h4.panel-title wind
     .progress
       .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='{{wind}}', aria-valuemin='0', aria-valuemax='100', style='width: {{wind/15}}%;')
         {{wind}}m/s
-
-
+    .row
+      .col-xs-6
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title humidity
+          .panel-body
+            {{hum}}Kg/m^3
+      .col-xs-6
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title gas
+          .panel-body
+            {{gas}}Sm^3
 .panel
   .panel-heading
     h3.panel-title Recent values
   .panel-body
     #graph
 
-.panel
-  .panel-heading
-    h3.panel-title Tools
-  .panel-body
-    .row
-      .col-xs-4
-        a.thumbnail(data-toggle="modal", data-target="#m1")
-          img(src='public/ic_all_out_48px.svg')
-          .caption
-            h3 Fix it
-            p some details
-      .col-xs-4
-        a.thumbnail(href='')
-          img(src='public/ic_all_out_48px.svg')
-          .caption
-            h3 Fix it
-            p some details
-      .col-xs-4
-        a.thumbnail(href='')
-          img(src='public/ic_all_out_48px.svg')
-          .caption
-            h3 Fix it
-            p some details
 div(style="height:5em;")
 
 #m1.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')

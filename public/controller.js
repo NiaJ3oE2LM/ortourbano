@@ -71,8 +71,7 @@ angular.module('starter')
 
 window.date = []
 var lastId = 0;
-//TODO  imposta chiamata con timeout
-
+//TODO service provider angularjs???
 function getValue(id){
   if(lastId == id) console.log('nothing to update');
   else {
@@ -86,8 +85,8 @@ function getValue(id){
         $scope.temp= response.data[0].temperature;
         $scope.light= response.data[0].brightness;
         $scope.hum= response.data[0].humidity;
-        $scope.hum= response.data[0].gas;
-        $scope.hum= response.data[0].wind;
+        $scope.gas= response.data[0].gas;
+        $scope.wind= response.data[0].wind;
         //grafico
         updateGraph(response.data[0]);
         }, function errorCallback(response) {

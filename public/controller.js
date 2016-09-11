@@ -12,7 +12,7 @@ angular.module('starter')
          text: '',
      },
      xAxis: {
-         categories: ['Jan', 'Feb', 'Mar']
+         categories: []
      },
      yAxis: {
          title: {
@@ -24,9 +24,6 @@ angular.module('starter')
              color: '#808080'
          }]
      },
-     tooltip: {
-         valueSuffix: '°C'
-     },
      legend: {
          layout: 'horizontal',
          align: 'center',
@@ -35,17 +32,30 @@ angular.module('starter')
      },
      series: [{
          name: 'Temperature',
-         data: []
-     }, {
-         name: 'Humidity',
-         data: []
+         data: [],
+          color: '#d9534f',
+         tooltip: {
+             valueSuffix: ' °C',
+         }
      }, {
          name: 'Light',
-         data: []
+         data: [],
+         color: '#f0ad4e',
+         tooltip: {
+             valueSuffix: ' Lux',
+         }
+     }, {
+       name: 'Humidity',
+       data: [],
+       color: '#5bc0de',
+       tooltip: {
+           valueSuffix: ' Kg/m^3',
+       }
      }]
  });
 });
 
+window.date = []
 var lastId = 0;
 //TODO  imposta chiamata con timeout
 
@@ -100,8 +110,10 @@ function updateHistory() {
   function updateGraph (json){
     var chart = $("#graph").highcharts(); //identifica grafico per id
     chart.series[0].addPoint(json.temperature);
-    chart.series[1].addPoint(json.humidity);
-    chart.series[2].addPoint(json.brightness);
+    chart.series[1].addPoint(json.brightness);
+    chart.series[2].addPoint(json.humidity);
+    window.date.push((JSON.stringify(json.date_time)).substr(12, 6));
+    chart.xAxis[0].setCategories(window.date);
   }
 
 //load initial values

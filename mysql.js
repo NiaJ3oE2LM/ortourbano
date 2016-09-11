@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
 });
 
 exports.getHistory = function (callback){
-  var sql="SELECT * FROM bioedison WHERE id between (SELECT (max(id)-50) FROM bioedison) and (SELECT max(id) FROM bioedison)";
+  var sql="SELECT * FROM bioedison WHERE id between (SELECT (max(id)-30) FROM bioedison) and (SELECT max(id) FROM bioedison)";
   connection.query(sql, function(err, result){
 
     if(err) callback(err, null);

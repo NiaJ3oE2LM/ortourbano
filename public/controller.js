@@ -51,6 +51,20 @@ angular.module('starter')
        tooltip: {
            valueSuffix: ' Kg/m^3',
        }
+     }, {
+       name: 'Gas',
+       data: [],
+       color: '#5bc0de',
+       tooltip: {
+           valueSuffix: ' Sm^3',
+       }
+     }, {
+       name: 'Wind',
+       data: [],
+       color: '#5bc0de',
+       tooltip: {
+           valueSuffix: ' m/s',
+       }
      }]
  });
 });
@@ -71,7 +85,9 @@ function getValue(id){
         lastId = id;
         $scope.temp= response.data[0].temperature;
         $scope.light= response.data[0].brightness;
-        $scope.hum= response.data[0].humidity
+        $scope.hum= response.data[0].humidity;
+        $scope.hum= response.data[0].gas;
+        $scope.hum= response.data[0].wind;
         //grafico
         updateGraph(response.data[0]);
         }, function errorCallback(response) {
@@ -109,9 +125,12 @@ function updateHistory() {
 
   function updateGraph (json){
     var chart = $("#graph").highcharts(); //identifica grafico per id
+    console.log(json);
     chart.series[0].addPoint(json.temperature);
     chart.series[1].addPoint(json.brightness);
     chart.series[2].addPoint(json.humidity);
+    chart.series[3].addPoint(json.gas);
+    chart.series[4].addPoint(json.wind);
     window.date.push((JSON.stringify(json.date_time)).substr(12, 6));
     chart.xAxis[0].setCategories(window.date);
   }

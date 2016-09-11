@@ -11,19 +11,30 @@
       h4.panel-title light
     .progress
       .progress-bar.progress-bar-warning(role='progressbar', aria-valuenow='{{light}}', aria-valuemin='0', aria-valuemax='100', style='width: {{light*10}}%;')
-        {{light}} ?
+        {{light}}Lux
     .panel-heading
       h4.panel-title humidity
     .progress
       .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='{{hum}}', aria-valuemin='0', aria-valuemax='100', style='width: {{hum/15}}%;')
-        {{hum}} ?
-      
+        {{hum}}Kg/m^3
+    .panel-heading
+      h4.panel-title gas
+    .progress
+      .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='{{gas}}', aria-valuemin='0', aria-valuemax='100', style='width: {{gas/15}}%;')
+        {{gas}}Sm^3
+    .panel-heading
+      h4.panel-title wind
+    .progress
+      .progress-bar.progress-bar-info(role='progressbar', aria-valuenow='{{wind}}', aria-valuemin='0', aria-valuemax='100', style='width: {{wind/15}}%;')
+        {{wind}}m/s
+
+
 .panel
   .panel-heading
     h3.panel-title Recent values
   .panel-body
     #graph
-    
+
 .panel
   .panel-heading
     h3.panel-title Tools
